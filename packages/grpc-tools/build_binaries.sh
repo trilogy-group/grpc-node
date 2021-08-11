@@ -27,24 +27,16 @@ tools_version=$(jq '.version' < package.json | tr -d '"')
 out_dir=$base/../../artifacts/grpc-tools/v$tools_version
 mkdir -p "$out_dir"
 
-case $(uname -s) in
-  Linux)
-    platform=linux
-    arch_list=( ia32 x64 )
-    ;;
-  Darwin)
-    platform=darwin
-    arch_list=( x64 )
-    ;;
-esac
+platform=linux
+arch_list=( aarch64 )
 
 for arch in "${arch_list[@]}"; do
   case $arch in
     ia32)
       toolchain_flag=-DCMAKE_TOOLCHAIN_FILE=linux_32bit.toolchain.cmake
       ;;
-    *)
-      toolchain_flag=-DCMAKE_TOOLCHAIN_FILE=linux_64bit.toolchain.cmake
+    aarch64)
+      toolchain_flag=-DCMAKE_TOOLCHAIN_FILE=linux_aarch64.toolchain.cmake
       ;;
   esac
   rm -f $base/build/bin/protoc
