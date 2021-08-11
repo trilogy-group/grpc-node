@@ -1,0 +1,34 @@
+{
+  "name": "grpc-tools",
+  "version": "1.11.2",
+  "author": "Google Inc.",
+  "description": "Tools for developing with gRPC on Node.js",
+  "homepage": "https://grpc.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grpc/grpc-node.git"
+  },
+  "bugs": "https://github.com/grpc/grpc-node/issues",
+  "contributors": [
+    {
+      "name": "Michael Lumish",
+      "email": "mlumish@google.com"
+    }
+  ],
+  "bin": {
+    "grpc_tools_node_protoc": "./bin/protoc.js",
+    "protoc": "./bin/protoc",
+    "grpc_tools_node_protoc_plugin": "./bin/protoc_plugin.js",
+    "grpc_node_plugin": "./bin/gprc_node_plugin"
+  },
+  "files": [
+    "index.js",
+    "bin/protoc.js",
+    "bin/protoc_plugin.js",
+    "bin/protoc",
+    "bin/grpc_node_plugin",
+    "bin/google/protobuf",
+    "LICENSE"
+  ],
+  "main": "index.js"
+}

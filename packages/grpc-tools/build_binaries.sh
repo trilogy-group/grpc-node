@@ -25,6 +25,7 @@ tools_version=$(jq '.version' < package.json | tr -d '"')
 
 # Note: artifacts should not be output in the package directory
 out_dir=$base/../../artifacts/grpc-tools/v$tools_version
+pkg_dir=$base/node-package
 mkdir -p "$out_dir"
 
 platform=linux
@@ -51,6 +52,9 @@ for arch in "${arch_list[@]}"; do
   cp $base/grpc_node_plugin $base/build/bin/
   file $base/build/bin/*
   cd $base/build
-  tar -czf "$out_dir/$platform-$arch.tar.gz" bin/
+#  tar -czf "$out_dir/$platform-$arch.tar.gz" bin/
+  cp bin/* $pkg_dir/bin
+  cd $pkg_dir
+  tar czf "$out_dir/node-package-$platform-$arch.tar.gz" .
   cd $base
 done
